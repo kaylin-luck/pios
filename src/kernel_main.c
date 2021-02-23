@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include "list.h"
-
+#include "gpio.h"
 
 void bss_to_zero();
 
 extern int __bss_start;
 extern int __bss_end;
+
+
 
 int global;
 
@@ -21,7 +23,12 @@ void kernel_main(){
 	list_add(list, &b);
 	list_add(list, &c);
 	list_remove(head, 1);
+	led_init();
 	while (1){
+		led_on();
+		delay();
+		led_off();
+		delay();
 	}
 }
 
