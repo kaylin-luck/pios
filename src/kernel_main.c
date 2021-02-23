@@ -7,8 +7,6 @@ void bss_to_zero();
 extern int __bss_start;
 extern int __bss_end;
 
-
-
 int global;
 
 struct list_element b = {NULL,NULL, 1};
