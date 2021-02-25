@@ -23,7 +23,7 @@ void kernel_main(){
 	list_add(list, &c);
 	list_remove(head, 1);
 	led_init();
-	//call esp
+	//esp_printf();
 	while (1){
 		led_on();
 		delay();
