@@ -17,20 +17,24 @@ struct list_element c = {NULL,NULL, 2};
 struct list_element *head = &a;
 struct list_element* list = &a;
 
-//worked on with HAris, same issue where blinky and esp_printf dont work together 
+//worked on with Haris, same issue where blinky and esp_printf dont work together 
 void kernel_main(){
 	/*bss_to_zero();
 	list_add(list, &b);
 	list_add(list, &c);
 	list_remove(head, 1);
-	led_init();
 	*/
-	esp_printf(putc, "Mem location for kernel main:  %x \n", kernel_main);
+
+	//hw 5
+	//esp_printf(putc, "Mem location for kernel main:  %x \n", kernel_main);
+	
+	//blinky hw 4
+	led_init();
 	while (1){
-		/*led_on();
+		led_on();
 		delay();
 		led_off();
-		delay();*/
+		delay();
 	}
 }
 
