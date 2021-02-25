@@ -17,7 +17,7 @@ struct list_element c = {NULL,NULL, 2};
 struct list_element *head = &a;
 struct list_element* list = &a;
 
-
+//worked on with HAris, same issue where blinky and esp_printf dont work together 
 void kernel_main(){
 	/*bss_to_zero();
 	list_add(list, &b);
