@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "list.h"
 #include "gpio.h"
+#include "rprintf.h"
 
 void bss_to_zero();
 
@@ -16,12 +17,15 @@ struct list_element *head = &a;
 
 struct list_element* list = &a;
 
+//assign address
+
 void kernel_main(){
 	bss_to_zero();
 	list_add(list, &b);
 	list_add(list, &c);
 	list_remove(head, 1);
 	led_init();
+	//call esp
 	while (1){
 		led_on();
 		delay();
