@@ -14,10 +14,10 @@ struct list_element b = {NULL,NULL, 1};
 struct list_element a = {NULL,NULL, 5};
 struct list_element c = {NULL,NULL, 2};
 struct list_element *head = &a;
-
 struct list_element* list = &a;
 
-//assign address
+//for hw 5
+int *mu_io_reg = 0x3F2155040;
 
 void kernel_main(){
 	bss_to_zero();
