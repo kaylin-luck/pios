@@ -2,6 +2,7 @@
 #include "list.h"
 #include "gpio.h"
 #include "rprintf.h"
+#include "serial.h"
 
 void bss_to_zero();
 
@@ -18,17 +19,18 @@ struct list_element* list = &a;
 
 
 void kernel_main(){
-	bss_to_zero();
+	/*bss_to_zero();
 	list_add(list, &b);
 	list_add(list, &c);
 	list_remove(head, 1);
 	led_init();
-	//esp_printf();
+	*/
+	esp_printf(putc, "Mem location for kernel main:  %x \n", kernel_main);
 	while (1){
-		led_on();
+		/*led_on();
 		delay();
 		led_off();
-		delay();
+		delay();*/
 	}
 }
 
