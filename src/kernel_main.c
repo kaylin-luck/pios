@@ -1,40 +1,41 @@
-#include <stdio.h>
 #include "list.h"
-#include "gpio.h"
 #include "rprintf.h"
 #include "serial.h"
+# define NULL (void)0
 
 void bss_to_zero();
 
 extern int __bss_start;
 extern int __bss_end;
-
+extern struct ppage* free_list;
 int global;
 
-struct list_element b = {NULL,NULL, 1};
+/*struct list_element b = {NULL,NULL, 1};
 struct list_element a = {NULL,NULL, 5};
 struct list_element c = {NULL,NULL, 2};
 struct list_element *head = &a;
-struct list_element* list = &a;
+struct list_element* list = &a;*/
 
 //worked on with Haris, same issue where blinky and esp_printf dont work together 
 void kernel_main(){
-	/*bss_to_zero();
-	list_add(list, &b);
-	list_add(list, &c);
-	list_remove(head, 1);
-	*/
-
+	bss_to_zero();
+	init_pfa_list();
+	struct ppage* test = free_list;
+	test = test->next;
+	esp_printf(putc, "Physical location:  %x \n", test->physical_addr);
+	test = test->next;
+        esp_printf(putc, "Physical location:  %x \n", test->physical_addr);
+	test = test->next;
+        esp_printf(putc, "Physical location:  %x \n", test->physical_addr);
+	test = allocate_physical_pages(2);
+	esp_printf(putc, "Physical pages:  %x \n", test->physical_addr);
 	//hw 5
 	//esp_printf(putc, "Mem location for kernel main:  %x \n", kernel_main);
-	
+
 	//blinky hw 4
-	led_init();
+	//led_init();
 	while (1){
-		led_on();
-		delay();
-		led_off();
-		delay();
+
 	}
 }
 
