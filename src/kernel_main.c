@@ -15,13 +15,15 @@ struct list_element a = {NULL,NULL, 5};
 struct list_element c = {NULL,NULL, 2};
 struct list_element *head = &a;
 struct list_element* list = &a;*/
-
-//worked on with Haris, same issue where blinky and esp_printf dont work together 
+ 
 void kernel_main(){
 	bss_to_zero();
+	//mmu
+	mmu_on();
+	//hw 7
 	init_pfa_list();
 	struct ppage* test = free_list;
-	test = test->next;
+	test = test->next; //where error is, doesnt like pointing to next
 	esp_printf(putc, "Physical location:  %x \n", test->physical_addr);
 	test = test->next;
         esp_printf(putc, "Physical location:  %x \n", test->physical_addr);

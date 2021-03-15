@@ -3,14 +3,12 @@
 #define NULL (void*)0
 #define NPAGES 128
 
+//done in class and with Haris
 struct ppage physical_page_array[NPAGES];
 struct ppage* free_list = NULL;
 
 void init_pfa_list(void){
-	struct ppage var = NULL;
-	int data = 0x200000;
-	void* address_p = (&__end & ~(0x200000 -1)) + 0x200000;
-	//void* address_p = 0x200000;
+	void* address_p = (((unsigned long)&__end) & ~(0x200000 -1)) + 0x200000;
 	int x;
 	for(x=0; x<NPAGES; x++){
 		listAdd(&free_list, (struct listElement*) &physical_page_array[x]);
@@ -31,5 +29,9 @@ struct ppage *allocate_physical_pages(unsigned int npages){
 }
 
 void free_physical_pages(struct ppage *ppage_list){
-	
+	struct ppage* new_var = ppage_list;
+	while(ppage_list != NULL){
+		listRemove(new_var);
+		listAdd(&free_list, new_var);
+	}
 }
