@@ -2,6 +2,7 @@
 #include "page.h"
 #define NULL (void*)0
 #define NPAGES 128
+extern int __end;
 
 //done in class and with Haris
 struct ppage physical_page_array[NPAGES];
