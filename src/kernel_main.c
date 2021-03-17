@@ -1,6 +1,7 @@
 #include "list.h"
 #include "rprintf.h"
 #include "serial.h"
+#include "page.h"
 # define NULL (void)0
 
 void bss_to_zero();
@@ -20,7 +21,8 @@ void kernel_main(){
 	bss_to_zero();
 	//mmu
 	//mmu_on();
-	//hw 7
+	
+	//hw 7 with haris and austin and in class
 	init_pfa_list();
 	struct ppage* test = free_list->next;
 	esp_printf(putc, "Physcial address:  %x \n", test->physical_addr);
