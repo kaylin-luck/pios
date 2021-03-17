@@ -19,18 +19,17 @@ struct list_element* list = &a;*/
 void kernel_main(){
 	bss_to_zero();
 	//mmu
-	mmu_on();
+	//mmu_on();
 	//hw 7
 	init_pfa_list();
-	struct ppage* test = free_list;
-	test = test->next; //where error is, doesnt like pointing to next
-	esp_printf(putc, "Physical location:  %x \n", test->physical_addr);
-	test = test->next;
-        esp_printf(putc, "Physical location:  %x \n", test->physical_addr);
-	test = test->next;
-        esp_printf(putc, "Physical location:  %x \n", test->physical_addr);
+	struct ppage* test = free_list->next;
+	esp_printf(putc, "Physcial address:  %x \n", test->physical_addr);
 	test = allocate_physical_pages(2);
-	esp_printf(putc, "Physical pages:  %x \n", test->physical_addr);
+	esp_printf(putc, "ppages -->  %x \n", test);
+	esp_printf(putc, "ppages -->  %x \n", test->physical_addr);
+	free_physical_pages(test);
+	test = free_list->next;
+	esp_printf(putc, "Freed:  %x \n", test->physical_addr);
 	//hw 5
 	//esp_printf(putc, "Mem location for kernel main:  %x \n", kernel_main);
 
