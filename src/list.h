@@ -6,6 +6,6 @@ struct listElement{
 	struct listElement *prev;
 };
 
-void listAdd(struct list_element **head, struct listElement* newElement);
+void listAdd(struct listElement **head, struct listElement* newElement);
 void listRemove(struct listElement *b);
 #endif
