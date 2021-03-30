@@ -8,7 +8,6 @@ void led_init(){
         *gpsel4 = *gpsel4 | (1 << 6);
         return;
 }
-
 //pin to 1
 void led_on(){
         *gpset1 = (1 << 10);
