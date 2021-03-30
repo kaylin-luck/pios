@@ -5,20 +5,20 @@ OBJDUMP := objdump
 OBJCOPY := objcopy
 CONFIGS := -DCONFIG_HEAP_SIZE=4096
 
-CFLAGS := -O0 -ffreestanding -fno-pie -fno-stack-protector -g3 -Wall $(CONFIGS)
+CFLAGS := -O0 -ffreestanding -fno-pie -fno-stack-protector -g3 -Wall $(CONFIGS) -mgeneral-regs-only
 
 
 ODIR = obj
 SDIR = src
 
 OBJS = \
-	boot.o \
-	kernel_main.o \
-	mmusetup.o \
 	serial.o \
 	rprintf.o \
 	page.o \
-	list.o \
+	mmusetup.o \
+	fat.o \
+	sd.o \
+	clibfuncs.o \
 
 
 OBJ = $(patsubst %,$(ODIR)/%,$(OBJS))
