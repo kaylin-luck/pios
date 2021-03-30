@@ -21,6 +21,7 @@ void kernel_main(){
 	sd_init();
 	fatInit();
 	fatOpen(&fat_test, "TEST");
+
 	//hw 7 with haris and austin and in class
 	/*init_pfa_list();
 	struct ppage* test = free_list->next;

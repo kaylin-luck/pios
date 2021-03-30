@@ -4,7 +4,7 @@
 #define NPAGES 128
 extern int __end;
 
-//done in class and with Haris
+//done in class and with Haris and Austin
 struct ppage physical_page_array[NPAGES];
 struct ppage* free_list = NULL;
 
